@@ -539,7 +539,7 @@ This pattern is powerful: Ansible provides the workflow orchestration (ordering,
 ### Remove Salt-managed users and files
 
 ```bash
-salt '*' user.absent workshop_salt remove=True
+salt '*' user.delete workshop_salt remove=True
 salt '*' file.remove /etc/motd
 ```
 

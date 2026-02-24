@@ -1,0 +1,21 @@
+---
+- name: Use Ansible to orchestrate Salt
+  hosts: head
+  become: yes
+  tasks:
+    - name: Sync Salt modules
+      command: salt '*' saltutil.sync_all
+
+    - name: Apply user state on all minions
+      command: salt '*' state.apply create_user
+
+    - name: Check node health via Salt grains
+      command: salt '*' grains.get os
+      register: os_info
+
+    - name: Display OS info
+      debug:
+        var: os_info.stdout_lines
+
+    - name: Install packages via Salt on compute nodes only
+      command: salt -G 'id:lci-compute-*' pkg.install vim-enhanced
