@@ -49,10 +49,16 @@ zfs get all scratch
 ## NFS installed on all nodes (compute/login/storage)
 dnf -y install nfs-utils
 
+# using 
+clush -g compute "dnf -y install nfs-utils"
+
+# Find the IP address of your nodes
+cat /etc/hosts 
+
 # Add following lines to /etc/exports on storage node (sub in IP addresses of your compute/login nodes)
-/scratch 192.168.0.X(rw,sync,no_root_squash)
-/scratch 192.168.0.X(rw,sync,no_root_squash)
-/scratch 192.168.0.X(rw,sync,no_root_squash)
+/scratch 192.168.11.27(rw,sync,no_root_squash) # lci-compute-11-1
+/scratch 192.168.11.211(rw,sync,no_root_squash) # lci-compute-11-2
+/scratch 192.168.11.163(rw,sync,no_root_squash) # lci-head-11-1
 
 systemctl start nfs-server && exportfs -ra
 
@@ -60,7 +66,7 @@ systemctl start nfs-server && exportfs -ra
 mkdir -p /scratch
 
 #Use IP addres of storage node add following to /etc/fstab
-192.168.0.X:/scratch	/scratch   nfs defaults 0 0 
+192.168.11.22:/scratch	/scratch   nfs defaults 0 0 
 
 # Mount the FS on your head/login nodes
 mount /scratch
