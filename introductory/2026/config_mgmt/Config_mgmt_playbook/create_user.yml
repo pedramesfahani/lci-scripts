@@ -8,6 +8,7 @@
         name: workshop
         uid: 3000
         state: present
+        comment: "Config Management Workshop User"
     - name: Ensure .ssh directory exists
       file:
         path: /home/workshop/.ssh

@@ -1,0 +1,19 @@
+---
+- name: Deploy MOTD to all nodes
+  hosts: all_nodes
+  become: yes
+  tasks:
+    - name: Set MOTD
+      copy:
+        content: |
+          ==========================================
+          Welcome to {{ inventory_hostname }}
+          LCI 2026 Workshop Cluster
+          Managed by Ansible and Salt
+          ==========================================
+        dest: /etc/motd
+
+    - name: Set login banner
+      copy:
+        content: "Authorized users only.\n"
+        dest: /etc/issue
