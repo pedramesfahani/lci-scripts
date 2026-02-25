@@ -80,7 +80,7 @@ All the exercises below should be done as user `mpiuser`.
 
 SSH to the first compute node:
 ```bash
-ssh lci-compute-XX-1
+ssh lci-compute-11-1
 ```
 
 Step into directory OpenMP:
