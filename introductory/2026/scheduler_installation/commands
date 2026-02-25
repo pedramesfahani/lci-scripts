@@ -27,6 +27,9 @@ ansible-playbook -i hosts.ini destroy.yml
 # On head node:
 systemctl status slurmctld
 systemctl status slurmdbd
+
+logout from the root and log back in. 
+
 sinfo
 
 # On compute nodes:

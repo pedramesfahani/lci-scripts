@@ -11,7 +11,7 @@
 # ============================================================
 
 # >>> CHANGE THIS to your assigned cluster number (01-40) <<<
-cluster_number: '01'
+cluster_number: '11'
 
 # --- Derived / common settings (no changes needed below) ---
 slurm_vers: '25.05.6'
